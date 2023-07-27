@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h2>Sell A Stock</h2>
+    <form action="/sell" method="post">
+        <select name="symbol" required>
+                <option value="" selected="selected" disabled default>Select</option>
+            {% for stock in stocks %}
+                {% if stock["sum"] > 1 %}
+                    <option value="{{ stock['symbol'] }}">{{ stock['symbol'] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="text" name="shares" placeholder="Shares" required>
+        <button type="submit">Sell</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+<p>
+    <b>User Cash:</b> {{ user_info["cash"] }}
+</p>
+<p>
+    <b>Stock Total:</b> {{ user_info["total"] }}
+</p>
+<p>
+    <b>User Total:</b> {{ user_total }}
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- create a loop to show all rows -->
+        {% for stock in stock_list %}
+            {% if stock["shares"] > 0 %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["name"] }}</td>
+                    <td>{{ stock["shares"] }}</td>
+                    <td>{{ stock["price"] }}</td>
+                    <td>{{ stock["total"] }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
